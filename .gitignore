@@ -1,0 +1,12 @@
+# Installers are distributed as Release assets.
+*.apk
+*.zip
+
+# This repository contains distribution documentation only.
+Assets/
+Packages/
+ProjectSettings/
+Library/
+Temp/
+Logs/
+UserSettings/

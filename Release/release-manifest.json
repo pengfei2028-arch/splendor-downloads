@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 2,
+  "product": "Splendor",
+  "versionName": "1.01",
+  "versionCode": 1,
+  "applicationId": "com.MRX2.Splendor",
+  "platform": "Android",
+  "architectures": [
+    "arm64-v8a"
+  ],
+  "minSdkVersion": 29,
+  "targetSdkVersion": 36,
+  "artifact": {
+    "fileName": "Splendor-1.01.apk",
+    "sizeBytes": 115218203,
+    "sha256": "179992e730c8f36c65cf7eaf89d439aeeb48d07fbccfb16873436128bb9514a0"
+  },
+  "signature": {
+    "verified": true,
+    "scheme": "v2",
+    "certificateSubject": "C=US, O=Android, CN=Android Debug",
+    "certificateSha256": "413b926465caf80d059654cbba1cc29fa86fa336331f42b01ff90ce8b41fb2f8"
+  },
+  "validation": {
+    "checkedOn": "2026-10-15",
+    "timezone": "Asia/Shanghai",
+    "apkMetadata": "passed",
+    "fileCopyIntegrity": "passed",
+    "apkSignatureIntegrity": "passed",
+    "deviceInstallAndRuntime": "reported-tested-by-project-maintainer",
+    "exactSourceCommitAssociation": "not-established",
+    "independentRuntimeRetest": "not-performed-in-this-review"
+  },
+  "requiredCompanion": {
+    "product": "MeshSyncBlender",
+    "version": "3.21.5",
+    "fileName": "MeshSyncBlender_v3.21.5.zip",
+    "sizeBytes": 72764,
+    "sha256": "8e36eae294c2f2e4c6302d99c733e8d43e893d1f940f5ebcf572fa6074f5e887",
+    "archiveEntryPoint": "MeshSyncBlender/__init__.py",
+    "installationRequired": true
+  },
+  "testedCombination": {
+    "reportedBy": "project-maintainer",
+    "reportedOn": "2026-10-15",
+    "actualTestDate": null,
+    "hardware": "PICO development test device",
+    "desktopApplication": "Blender",
+    "desktopVersion": "5.2",
+    "apkVersion": "1.01",
+    "pluginVersion": "3.21.5",
+    "status": "reported-tested",
+    "independentlyRetested": false
+  },
+  "usageGuide": "docs/GettingStarted.zh-CN.md",
+  "usageGuideUrl": "https://github.com/pengfei2028-arch/splendor-downloads/blob/main/docs/GettingStarted.zh-CN.md",
+  "bundledUsageGuide": "GettingStarted.zh-CN.md"
+}
