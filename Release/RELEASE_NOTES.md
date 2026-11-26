@@ -1,30 +1,60 @@
-# Splendor 1.01 完整体验
+# Splendor 1.02 完整体验
 
 **完整体验需要两个组件：PICO 头显端 APK + 电脑 Blender 插件，两项都要安装。** 普通体验用户无需 Unity 或源码构建。
 
-推荐下载 **[Splendor-1.01-Experience.zip](https://github.com/pengfei2028-arch/splendor-downloads/releases/download/v1.01/Splendor-1.01-Experience.zip)**，解压后包含两个安装包、入门教程、校验值和版本清单。也可以在本页 Assets 中分别下载：
+推荐下载 **[Splendor-1.02-Experience.zip](https://github.com/pengfei2028-arch/splendor-downloads/releases/download/v1.02/Splendor-1.02-Experience.zip)**，解压后包含两个安装包、入门教程、校验值和版本清单。也可以在本页 Assets 中分别下载：
 
 | 文件 | 用途 |
 | --- | --- |
-| `Splendor-1.01.apk` | 安装到 PICO 头显 |
-| `MeshSyncBlender_v3.21.5.zip` | 在电脑的 Blender 中通过“从磁盘安装”添加并启用 |
+| `Splendor-1.02.apk` | 安装到 PICO 头显 |
+| `MeshSyncBlender_v3.22.0.zip` | 在电脑的 Blender 中通过“从磁盘安装”添加并启用 |
 | `GettingStarted.zh-CN.md` | 安装与第一次同步的基础教程 |
 | `SHA256SUMS.txt` / `release-manifest.json` | 两个安装包的校验信息 |
 
-首次使用请阅读 **[安装与首次同步教程](https://github.com/pengfei2028-arch/splendor-downloads/blob/main/docs/GettingStarted.zh-CN.md)**。主要步骤：安装两个组件 → 打开 Blender 的 `N → Binary-Sync` 面板 → 扫描并选择头显 → 点击 `Start`。重新打开 `.blend` 文件后，需要再次 Start。
+首次使用请阅读 **[安装与首次同步教程](https://github.com/pengfei2028-arch/splendor-downloads/blob/main/docs/GettingStarted.zh-CN.md)**。主要步骤：安装两个组件 → 头显和电脑连同一个 Wi-Fi → 打开 Blender 的 `N → Splendor` 面板 → 头显自动出现并被选中 → 点击 **开始同步**。重新打开 `.blend` 文件后，需要再次点击。
+
+## 从 1.01 升级
+
+- **头显：先卸载 1.01，再安装 1.02。** 两个版本的安装包签名不同，系统不允许直接覆盖安装。卸载会清掉头显上的校准记录和模型缓存。
+- **Blender：** 直接从磁盘安装新的插件 ZIP，会覆盖旧版。插件改名为 **Splendor**，升级后在侧边栏点 Splendor 标签（原来的 Binary-Sync 标签不再存在）。
+- 1.02 的头显应用需要配合插件 3.22.0 使用；1.01 的安装包仍保留在 [v1.01 下载页](https://github.com/pengfei2028-arch/splendor-downloads/releases/tag/v1.01)。
+
+## 变化
+
+**Blender 插件 3.22.0**
+
+- 改名为 **Splendor**：插件列表、侧边栏标签和面板标题都叫这个名字。
+- 面板重新整理，只有三块：头显列表、开始同步 / 状态、更多设置（排查问题收在更多设置里）。
+- 中文 / English 两种界面语言，面板标题栏右边一键切换；默认跟随 Blender 的界面语言。
+- 网络里只有一台头显时自动选中，不用先点设备。头显重启或重连 Wi-Fi 后换了地址，插件认出是同一台，会自动跟过去。
+- 场景里的 WebP 贴图在发送前自动转成 JPEG 或 PNG。以前只要有一张 WebP 贴图，头显里整个模型都不显示。
+- 修复：点“停止同步”之后，头显里移动模型仍会改动 Blender 场景。
+- 修复：头显拖动带子物体的模型时，Blender 把每个子物体的位置都发回头显（17 个子物体时每秒约 380 个包），可能让零件跟不上手。
+- 撤销 / 重做不再把头显地址改回旧值。
+
+**头显应用 1.02**
+
+- 第一次打开时提示：先安装 Blender 插件，头显和电脑连接同一个 Wi-Fi。点 Got it 后不再出现。
+- 修复：透视（看得见现实环境的）背景时不时整个变黑。
+- 修复：在电脑上拖动模型时头显里一卡一卡；电脑和头显同时操作同一个模型时，以电脑为准。
+- 修复：在 Blender 里实时改的颜色，头显里显示得比 Blender 暗。
+- 骨骼动画按发送时间缓冲播放，网络不稳时不再忽停忽走。
+- 头显应用重开后能自动恢复同步；电脑上回传端口被占用时自动换一个。
+- 收到的贴图和模型数据存在头显上，应用重启后不必重传；同步贴图少占一半内存。
+- 界面面板改成不透明的浅灰面板，边缘高光调淡、调细；面板边缘和图标转头时的闪烁减轻。
+- 广播里带上设备编号和当前地址，配合插件自动跟随换了地址的头显。
+- 模型加载失败时，日志里会写明原因。
 
 ## 测试组合
 
-项目提供者反馈，本组安装包已在 **PICO 开发测试设备 + Blender 5.2** 上测试。其他设备和 Blender 版本尚未确认兼容。设备具体要求请向项目提供者了解。
+- 项目提供者在 **PICO 开发测试设备 + Blender 5.2（Windows）** 上测试了与 1.02 相同源码的测试包：自动选中头显、首次同步、WebP 贴图、贴图缓存、头显里抓取模型均正常。1.02 是在这份源码上只修改版本号后重新构建的，发布前没有在设备上再安装一遍。
+- 插件里“停止同步”和“拖动带子物体的模型”这两项修复是在设备测试之后加入的，只在 Blender 中用模拟数据验证过。
+- 插件 ZIP 在全新的 Blender 5.2 配置中从磁盘安装、启用验证通过。macOS 上的这个版本尚未测试。
+- APK 内嵌版本：**1.02**；Android versionCode：2；包名：`com.MRX2.Splendor`；架构：`arm64-v8a`。使用 Android Debug 签名，APK v2 签名验证通过。
+- Blender 插件版本：**3.22.0**；启用后的显示名称：`Splendor`。应用和插件使用独立版本号。
 
-- APK 内嵌版本：**1.01**；Android versionCode：1；包名：`com.MRX2.Splendor`；架构：`arm64-v8a`。
-- Blender 插件版本：**3.21.5**；启用后的显示名称：`Binary-FileStream Protocol (GLB)`。
-- 应用和插件使用独立版本号。
+## 已知问题
 
-## 本次整理
-
-本公开下载页提供 APK、Blender 插件、完整体验 ZIP 与入门教程。APK 内嵌版本为 1.01，插件版本为 3.21.5。
-
-本次整理已核对文件完整性、版本信息及插件源码，未另行进行设备运行复测。APK 使用 Android Debug 签名，APK v2 签名验证通过；尚未建立既有 APK 与源码快照的可复现构建对应关系。
+- 模型里绑定在第三套 UV 上的贴图，在头显里不会按那套 UV 显示；前两套 UV 不受影响。
 
 安装包与教程公开下载，无需 GitHub 账号或源码仓库访问权限。本下载仓库不包含 Unity 工程源码。
